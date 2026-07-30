@@ -11,7 +11,7 @@ class AgentState(TypedDict):
     
     sub_tasks: List[dict]
 
-    research_notes: Annotated[list[dict], operator.add]
+    research_notes: Annotated[list[str], operator.add]
 
     synthesis : str
 

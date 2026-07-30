@@ -1,7 +1,7 @@
 from langchain_core.messages import HumanMessage,SystemMessage, AIMessage
 from src.Graph.state import AgentState
 from src.Agents.SynthesizeAgent.synthesize_prompt import SYNTHESIZE_AGENT_SYS_PROMPT
-from src.config.config import get_llm
+from src.config.config import synthesize_llm
 
 def Synthesize_agent(state: AgentState) -> dict:
     query = state["query"]
@@ -22,6 +22,6 @@ def Synthesize_agent(state: AgentState) -> dict:
         HumanMessage(content=message)
     ]
     
-    response = get_llm().invoke(messages)
+    response = synthesize_llm().invoke(messages)
     
     return {"messages": [AIMessage(content=response.content)],"synthesis": response.content}

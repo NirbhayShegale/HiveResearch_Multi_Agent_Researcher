@@ -1,8 +1,6 @@
-from src.config.config import get_llm
+from src.config.config import P_R_llm
 from langchain_core.messages import HumanMessage, SystemMessage,AIMessage
-# pyrefly: ignore [missing-import]
 from src.Agents.PlannerAgent.planner_prompt import PLANNER_AGENT_SYS_PROMPT
-# pyrefly: ignore [missing-import]
 from src.Agents.PlannerAgent.Planner_model import PlannerModel
 from src.Graph.state import AgentState
 
@@ -13,7 +11,7 @@ def PlannerAgent(state: AgentState)-> dict:
         HumanMessage(content=state["query"])
     ]
 
-    llm = get_llm().with_structured_output(PlannerModel, method="json_mode")
+    llm = P_R_llm().with_structured_output(PlannerModel, method="json_mode")
 
 
     response = llm.invoke(Message)

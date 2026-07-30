@@ -1,16 +1,16 @@
 from src.Agents.WriterAgent.writer_prompt import WRITER_AGENT_SYS_PROMPT
 from langchain_core.messages import HumanMessage,SystemMessage
 from src.Graph.state import AgentState
-from src.config.config import get_llm
+from src.config.config import writer_llm
 
 def Writer_agent(state: AgentState) -> dict:
     original_query = state.get("query", "")
     synthesis = state.get("synthesis", "")
     current_draft = state.get("draft", "")
     feedback = state.get("critic_feedback", "")
-    approval = state.get("critic_approval","")
+    approval = state.get("critic_approval", None)
 
-    if approval == False: 
+    if approval is False: 
         task_instructions = f"""
         You are an expert editor. Please revise the draft below strictly to address the critic's feedback.
         
@@ -43,8 +43,8 @@ def Writer_agent(state: AgentState) -> dict:
         HumanMessage(content=task_instructions)
     ]
 
-    response = get_llm().invoke(message)
+    response = writer_llm().invoke(message)
     
-    return {"messages":[response],"draft": response.content}
+    return {"messages":[response], "draft": response.content, "critic_approval": None, "critic_feedback": ""}
 
     

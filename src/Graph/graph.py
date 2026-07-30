@@ -10,7 +10,9 @@ from src.Agents.SynthesizeAgent.Synthesize_agent import Synthesize_agent
 from src.Agents.WriterAgent.writer_agent import Writer_agent
 from src.Agents.CriticAgent.critic_agent import CriticAgent
 from langgraph.prebuilt import tools_condition
+from Database.database import create_checkpoint
 
+checkpointer=create_checkpoint()
 
 graph = StateGraph(AgentState)
 graph.add_node("supervisor", supervisor)
@@ -45,4 +47,4 @@ graph.add_edge("WriterAgent", "supervisor")
 
 graph.add_edge("CriticAgent","supervisor")
 
-app = graph.compile()
+app = graph.compile(checkpointer=checkpointer)
