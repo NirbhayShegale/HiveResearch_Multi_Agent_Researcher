@@ -12,13 +12,13 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 
 WORKDIR /app
 
-# Copy dependency manifests (layer-cache friendly)
 COPY pyproject.toml uv.lock ./
 
-# uv creates the venv at /app/.venv
-RUN uv sync --frozen --no-dev --no-install-project
+# UV_SYSTEM_PYTHON=1 → installs into system Python, no venv created
+# Verify uvicorn is available immediately after install
+RUN UV_SYSTEM_PYTHON=1 uv sync --frozen --no-dev --no-install-project \
+    && uvicorn --version
 
-# Copy project source
 COPY . .
 
 ENV PYTHONPATH=/app
@@ -26,5 +26,4 @@ ENV PYTHONUNBUFFERED=1
 
 EXPOSE 8000
 
-# Use absolute path — no PATH resolution needed, guaranteed to work
-CMD ["/app/.venv/bin/uvicorn", "UI.Backend:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "UI.Backend:app", "--host", "0.0.0.0", "--port", "8000"]
