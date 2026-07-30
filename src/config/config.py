@@ -9,7 +9,7 @@ def P_R_llm():
         temperature=0.0,
     )
 
-def synthesis_llm():
+def synthesize_llm():
     return ChatGroq(
         model="llama-3.3-70b-versatile",
         temperature=0.6,

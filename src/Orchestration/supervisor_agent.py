@@ -1,7 +1,7 @@
 from src.Graph.state import AgentState
 from langchain_core.messages import HumanMessage, SystemMessage
 from src.Orchestration.Supervisor_prompt import SUPERVISOR_PROMPT
-from src.config.config import get_llm
+from src.config.config import P_R_llm
 from typing import Optional
 import json
 
@@ -62,7 +62,7 @@ def supervisor(state: AgentState) -> dict:
             SystemMessage(content=SUPERVISOR_PROMPT),
             HumanMessage(content=state_summary),
         ]
-        response = get_llm().invoke(messages)
+        response = P_R_llm().invoke(messages)
         reasoning = response.content.strip()
 
         if "reasoning" in reasoning:

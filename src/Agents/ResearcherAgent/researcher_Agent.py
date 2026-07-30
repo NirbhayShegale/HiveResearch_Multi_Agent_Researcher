@@ -1,10 +1,10 @@
 from src.Graph.state import AgentState
 from src.Agents.ResearcherAgent.researcher_prompt import RESEARCHER_SYSTEM_PROMPT
 from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
-from src.config.config import P_R_llm
 from src.Tools.Tavily import search_tool
 from langgraph.prebuilt import ToolNode
 from src.Agents.ResearcherAgent.research_summarizer import research_summarizer
+from src.config.config import P_R_llm
 
 
 llm = P_R_llm()
@@ -34,7 +34,7 @@ def ResearchAgent(state: AgentState) -> dict:
         Please use your Tavily search tool to research this topic
     """
 
-    # --- After tool results have come back: summarize and move on ---
+    # --- After tool invocation: summarize and move on ---
     if last_message and getattr(last_message, "type", "") == "tool":
 
 
@@ -52,7 +52,7 @@ def ResearchAgent(state: AgentState) -> dict:
             "sub_tasks": tasks[1:]
         }
 
-    # --- First invocation for this task: let the LLM decide to search ---
+    # --- First time invoking for this task: let the LLM decide to search ---
     message = [
         SystemMessage(content=RESEARCHER_SYSTEM_PROMPT),
         HumanMessage(content=task_instructions),

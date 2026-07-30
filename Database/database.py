@@ -11,7 +11,7 @@ DB_URI = os.getenv("DB_URI")
 _conn_kwargs = {
     "autocommit": True,
     "prepare_threshold": 0,
-    "keepalives": 2,
+    "keepalives": 1,
     "keepalives_idle": 60,
     "keepalives_interval": 20,
     "keepalives_count": 5,

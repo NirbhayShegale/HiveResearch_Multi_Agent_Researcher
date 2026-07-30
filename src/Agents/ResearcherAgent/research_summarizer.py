@@ -1,7 +1,7 @@
 from langchain_core.messages import SystemMessage, HumanMessage
-from src.config.config import get_llm
+from src.config.config import P_R_llm
 
-_llm = get_llm()
+_llm = P_R_llm()
 
 def research_summarizer(task: dict, tool_results: str) -> str:
     question = task.get("question", "the research question")
@@ -17,4 +17,4 @@ def research_summarizer(task: dict, tool_results: str) -> str:
         )),
     ]
     response = _llm.invoke(messages)
-    return response.content
+    return response.content
