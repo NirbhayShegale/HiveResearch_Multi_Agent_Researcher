@@ -3,7 +3,7 @@ import requests
 import json
 import os
 
-BACKEND_URL = os.getenv("BACKEND_URL", "http://127.0.0.1:8000")
+BACKEND_URL = os.getenv("BACKEND_URL", "https://hiveresearch-multi-agent-researcher.onrender.com")
 
 st.set_page_config(page_title="Hive Mind Research", page_icon="🐝")
 st.title("🐝 Hive Mind Research")
