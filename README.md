@@ -270,20 +270,6 @@ User: "What are the environmental and economic trade-offs of EVs vs hydrogen tru
 | **PostgreSQL checkpointing** | Enables long-running research sessions to survive process restarts and allows replaying past workflows for debugging. |
 | **Pydantic structured output** | Enforces schema compliance between agents at runtime — a malformed sub-task or routing decision will raise immediately rather than causing silent downstream failures. |
 
----
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Feel free to open an issue or submit a pull request.
-
----
-
 <p align="center">
   Built with ❤️ by <a href="https://github.com/NirbhayShegale">Nirbhay Shegale</a>
 </p>
