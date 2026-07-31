@@ -33,15 +33,11 @@
 | **🖥️ Web App** | [hivemindreseacher.streamlit.app](https://hivemindreseacher.streamlit.app) |
 | **⚡ API** | [hiveresearch-multi-agent-researcher.onrender.com](https://hiveresearch-multi-agent-researcher.onrender.com) |
 
-> **Try it now** — enter any research question in the Streamlit app and watch the agents work in real-time.
-
 ---
 
 ## 📌 Overview
 
 **HiveResearch** is a production-grade, multi-agent AI system built on [LangGraph](https://github.com/langchain-ai/langgraph) that automates deep research. Instead of a single LLM call, it deploys a **hive of 5 specialized agents**, each with a distinct role, coordinated by a central Supervisor through a stateful directed graph.
-
-> **Give it a question. Get back a well-researched, structured report — with citations.**
 
 ---
 
