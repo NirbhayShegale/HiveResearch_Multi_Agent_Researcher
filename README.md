@@ -1,5 +1,4 @@
 <p align="center">
-  <img src="https://img.icons8.com/color/96/bee.png" alt="HiveResearch Logo" width="80"/>
 </p>
 
 <h1 align="center">🐝 HiveResearch — Multi-Agent Research System</h1>
